@@ -111,7 +111,7 @@ if __name__ == "__main__":
     BGRImage = cv2.imread(PATH)
     img = image_preprocessing(BGRImage)
     Y, Cr, Cb = img
-    np.save("original", np.array(img, dtype=object))
+    np.save("original_image", np.array(img, dtype=object))
 
     img_coeff = to_coeff_rep(tuple((Y, Cr, Cb)))
     Y_coeff, Cr_coeff, Cb_coeff = img_coeff
