@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from DCT_Image_Compression.compression_format import SimpleComp
+from compression_format import SimpleComp
 import os
 
 PATH = "./test_img.png"
@@ -50,7 +50,7 @@ def padding(channel, mutliple_of):
 def image_preprocessing(image):
     YCrCb = load_YCrCb(image)
     YCrCb = [padding(x, 16) for x in YCrCb]
-    YCrCb = [np.clip(Y_value - 128, 0, 255) for x in YCrCb]
+    YCrCb = [np.clip(x - 128, -128, 127) for x in YCrCb]
     YCrCb[1] = chroma_subsampling(YCrCb[1])
     YCrCb[2] = chroma_subsampling(YCrCb[2])
     return YCrCb
